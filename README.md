@@ -51,6 +51,21 @@ LiDAR 特徵 ────────┘
 
 模型流程：
 
+flowchart TB
+    A[RGB 影像] --> B[CNN Encoder]
+    C[LiDAR 輸入] --> D[CNN Encoder]
+
+    B --> E[RGB Tokens]
+    D --> F[LiDAR Tokens]
+
+    E <--> G[雙向 Cross-Attention]
+    F <--> G
+
+    G --> H[特徵聚合]
+    H --> I[Control Head]
+    I --> J[控制預測]
+
+--
 RGB 影像                         LiDAR 輸入
    |                                 |
    v                                 v
@@ -74,7 +89,7 @@ RGB Tokens                      LiDAR Tokens
               |
               v
            控制預測
-
+--
 RGB 影像 → CNN Encoder → RGB Tokens
                               ↕
                     雙向 Cross-Attention
