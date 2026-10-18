@@ -51,21 +51,6 @@ LiDAR 特徵 ────────┘
 
 模型流程：
 
-flowchart TB
-    A[RGB 影像] --> B[CNN Encoder]
-    C[LiDAR 輸入] --> D[CNN Encoder]
-
-    B --> E[RGB Tokens]
-    D --> F[LiDAR Tokens]
-
-    E <--> G[雙向 Cross-Attention]
-    F <--> G
-
-    G --> H[特徵聚合]
-    H --> I[Control Head]
-    I --> J[控制預測]
-
---
 '''text
 RGB 影像                         LiDAR 輸入
    |                                 |
@@ -118,18 +103,7 @@ RGB Tokens                      LiDAR Tokens
            控制預測
 ```
 
---
-RGB 影像 → CNN Encoder → RGB Tokens
-                              ↕
-                    雙向 Cross-Attention
-                              ↕
-LiDAR 輸入 → CNN Encoder → LiDAR Tokens
-                              ↓
-                         特徵聚合
-                              ↓
-                       Control Head
-                              ↓
-                         控制預測
+
 
 
 本架構為跨模態融合的實驗性實作，目的在於探索注意力機制於不同感測器特徵整合上的應用。
