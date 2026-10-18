@@ -92,6 +92,33 @@ RGB Tokens                      LiDAR Tokens
            控制預測
 '''
 --
+```text
+RGB 影像                         LiDAR 輸入
+   |                                 |
+   v                                 v
+CNN Encoder                     CNN Encoder
+   |                                 |
+   v                                 v
+RGB Tokens                      LiDAR Tokens
+   |                                 |
+   +----------+     +----------------+
+              |     |
+              v     v
+       雙向 Cross-Attention
+       - RGB-to-LiDAR
+       - LiDAR-to-RGB
+              |
+              v
+           特徵聚合
+              |
+              v
+         Control Head
+              |
+              v
+           控制預測
+```
+
+--
 RGB 影像 → CNN Encoder → RGB Tokens
                               ↕
                     雙向 Cross-Attention
