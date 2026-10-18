@@ -21,7 +21,7 @@ RGB-LiDAR 多模態融合之自動駕駛控制預測
 此模型使用兩個獨立的 CNN Encoder，分別處理 RGB 影像與 LiDAR 輸入，取得各自的特徵表示，再透過串接與全連接層進行融合，最後輸出三個控制相關預測值。
 
 模型流程：
-'''text
+```text
 RGB 影像
    ↓
 CNN Encoder
@@ -33,7 +33,7 @@ LiDAR 輸入 ───────┤
 CNN Encoder       │
    ↓              │
 LiDAR 特徵 ────────┘
-'''
+```
 
 此架構作為基準模型，用於建立多模態特徵融合的初步實作。
 
@@ -50,33 +50,6 @@ LiDAR 特徵 ────────┘
 聚合融合後的特徵，並透過預測頭輸出控制相關數值。
 
 模型流程：
-
-'''text
-RGB 影像                         LiDAR 輸入
-   |                                 |
-   v                                 v
-CNN Encoder                     CNN Encoder
-   |                                 |
-   v                                 v
-RGB Tokens                      LiDAR Tokens
-   |                                 |
-   +----------+     +----------------+
-              |     |
-              v     v
-       雙向 Cross-Attention
-       - RGB-to-LiDAR
-       - LiDAR-to-RGB
-              |
-              v
-           特徵聚合
-              |
-              v
-         Control Head
-              |
-              v
-           控制預測
-'''
---
 ```text
 RGB 影像                         LiDAR 輸入
    |                                 |
