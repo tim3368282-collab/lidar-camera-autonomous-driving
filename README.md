@@ -66,6 +66,7 @@ flowchart TB
     I --> J[控制預測]
 
 --
+'''text
 RGB 影像                         LiDAR 輸入
    |                                 |
    v                                 v
@@ -89,6 +90,7 @@ RGB Tokens                      LiDAR Tokens
               |
               v
            控制預測
+'''
 --
 RGB 影像 → CNN Encoder → RGB Tokens
                               ↕
